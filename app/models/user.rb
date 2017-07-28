@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # can only be set by accessing the DB with a client directly
   def is_admin?
     self.admin
   end
