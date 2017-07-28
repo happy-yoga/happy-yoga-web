@@ -1,5 +1,14 @@
 {
   "name": "happy-yoga-web",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "eslint": "^4.3.0",
+    "faucet-pipeline-js": "^0.12.2",
+    "standard": "^10.0.2"
+  },
+  "scripts": {
+    "build:js": "faucet --no-fingerprint --compact",
+    "test": "eslint --cache *.js src && echo ✓",
+    "start": "npm run build:js -- --watch"
+  }
 }
