@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build:js": "faucet --no-fingerprint --compact",
+    "build:js:watch": "npm run build:js -- --watch",
     "test": "eslint --cache *.js src && echo ✓",
-    "start": "npm run build:js -- --watch"
+    "start": "npm run build:js"
   }
 }
