@@ -1,5 +1,5 @@
-class NotRegisteredError extend Error ; end
-class NoAdminRoleError extend Error ; end
+class NotRegisteredError < StandardError ; end
+class NoAdminRoleError < StandardError ; end
 
 class User < ActiveRecord::Base
   def self.from_omniauth(auth)
@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
       # user.save!
     end
 
-    raise new NotRegisteredError('the given user is not in the database') unless user
-    raise new NoAdminRoleError('You don\'t have the appropriate rights to access these resources') unless user.is_admin?
+    raise NotRegisteredError.new('the given user is not in the database') unless user
+    raise NoAdminRoleError.new('You don\'t have the appropriate rights to access these resources') unless user.is_admin?
 
     return user
   end
