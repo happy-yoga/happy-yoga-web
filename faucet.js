@@ -3,8 +3,8 @@ const config = {
 	bundles: [{
 		entryPoint: "app/assets/javascripts/main.js",
 		target: "app/assets/javascripts/dist/main.js",
-		format: "cjs",
-		moduleName: "render",
+		format: "iife",
+		moduleName: "main",
 		transpiler: {
 			features: ["es2015"]
 		}
