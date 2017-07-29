@@ -3,6 +3,8 @@ class Admin::ApplicationController < ::ActionController::Base
   before_action :reject_unauthenticated
   helper_method :current_user
 
+  layout 'admin_layout'
+
   private
 
   def find_user(user_id)
