@@ -1,0 +1,13 @@
+<%= form_for content, url: admin_content_path(content) do |f| %>
+
+  <div class="card-block">
+    <div class="form-group">
+      <%= f.label :body, 'Inhalt' %>
+      <%= f.text_area :body, rows: 8, cols: 80 %>
+    </div>
+  </div>
+
+  <footer class="card-footer">
+    <%= f.submit "Speichern" %>
+  </footer>
+<% end %>

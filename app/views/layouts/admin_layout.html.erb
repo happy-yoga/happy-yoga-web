@@ -3,6 +3,9 @@
   <head>
     <title>Happy Yoga - Admin Area</title>
     <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -14,9 +17,11 @@
     <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: 'true' %>
+
   </head>
 
   <body>
+    <%= render 'admin/navbar'  %>
     <main class="container-fluid">
       <%= content_for?(:content) ? yield(:content) : yield %>
     </main>
