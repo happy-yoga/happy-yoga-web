@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170728141556) do
+ActiveRecord::Schema.define(version: 20170728171602) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170728141556) do
     t.string "oauth_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
   end
 
 end

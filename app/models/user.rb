@@ -1,5 +1,6 @@
 class NotRegisteredError < StandardError ; end
 class NoAdminRoleError < StandardError ; end
+class UnallowedDummyUserAccessError < StandardError ; end
 
 class User < ActiveRecord::Base
   def self.from_omniauth(auth)
@@ -19,8 +20,19 @@ class User < ActiveRecord::Base
     return user
   end
 
-  # can only be set by accessing the DB with a client directly
-  def is_admin?
-    self.admin
+  def self.dummy_user
+    unless Rails.env.production?
+      User.new.tap do |user|
+        user.id = 1
+        user.email = 'dummy@user.de'
+        user.uid = 12345
+        user.provider = 'godhub'
+        user.avatar_url = 'https://fthmb.tqn.com/tVtfXU4sqXsVY2_4CMsSX9XbpeA=/768x0/filters:no_upscale()/about/spongebob_wide-56a00f0a5f9b58eba4aeb6f2.jpg'
+        user.username = 'Spunchy'
+        user.admin = true
+      end
+    else
+      raise UnallowedDummyUserAccessError.new('dummy user is not allowed in production')
+    end
   end
 end

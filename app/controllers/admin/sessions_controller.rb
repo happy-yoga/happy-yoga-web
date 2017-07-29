@@ -1,5 +1,8 @@
-class SessionsController < ApplicationController
+class Admin::SessionsController < ::Admin::ApplicationController
+  skip_before_action :reject_unauthenticated
+
   def new
+    session[:user_id] = User.dummy_user.id unless Rails.env.production?
   end
 
   def create
@@ -13,6 +16,6 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to request.referer
+    redirect_to root_path
   end
 end
