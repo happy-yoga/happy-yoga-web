@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     Rails.logger.debug user.inspect
 
     raise NotRegisteredError.new('the given user is not in the database') unless user
-    raise NoAdminRoleError.new('You don\'t have the appropriate rights to access these resources') unless user.is_admin?
+    raise NoAdminRoleError.new('You don\'t have the appropriate rights to access these resources') unless user.admin?
 
     return user
   end
