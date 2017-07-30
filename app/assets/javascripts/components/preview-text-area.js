@@ -1,16 +1,6 @@
-/* global window, customElements, HTMLElement, $, markdown */
-
-const preview = () => `<embed-form-preview></embed-form-preview>`
-
-const bindDimensions = function bindDimensions (reference, element) {
-  element
-    .css('height', reference.css('height'))
-    .css('width', reference.css('width'))
-}
+/* global customElements, HTMLElement, $, SimpleMDE */
 
 class PreviewTextArea extends HTMLElement {
-  static get dimensionCheckInterval () { return 1000 }
-
   constructor (self) {
     self = super(self)
     this.dom = {}
@@ -19,45 +9,18 @@ class PreviewTextArea extends HTMLElement {
   connectedCallback () {
     this.root = $(this)
     this.textArea = this.root.find('textarea')
-    this.preview = $(preview())
+    this.mde = new SimpleMDE({
+      element: this.textArea[0],
+      spellChecker: false
 
-    this.bindPreviewDimensions()
-    this.bindContentPreview()
-    this.textArea.after(this.preview)
-  }
-
-  disconnectedCallback () {
-    window.clearInterval(this.previewInterval)
-    this.textArea.off(this.textAreaListeners)
-  }
-
-  bindPreviewDimensions () {
-    bindDimensions(this.textArea, this.preview)
-
-    this.previewInterval = setInterval(() =>
-      bindDimensions(this.textArea, this.preview), PreviewTextArea.dimensionCheckInterval
-    )
-  }
-
-  bindContentPreview () {
-    this.preview.html(markdown.toHTML(this.textArea.val()))
-
-    this.textArea.on(this.textAreaListeners, e => {
-      this.preview.html(markdown.toHTML(this.textArea.val()))
     })
   }
 
-  get textAreaListeners () {
-    let memo
-
-    if (memo) { return memo }
-
-    memo = ['change', 'keyup', 'cut', 'paste'].join('.preview-text ')
-    return memo
+  disconnetedCallback () {
   }
 
-  set root (root) {
-    this.dom.root = root
+  set root (elem) {
+    this.dom.root = elem
   }
 
   get root () {
@@ -70,14 +33,6 @@ class PreviewTextArea extends HTMLElement {
 
   get textArea () {
     return this.dom.textArea
-  }
-
-  set preview (preview) {
-    this.dom.preview = preview
-  }
-
-  get preview () {
-    return this.dom.preview
   }
 }
 

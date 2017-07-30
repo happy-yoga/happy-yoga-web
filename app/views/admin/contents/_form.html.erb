@@ -2,12 +2,9 @@
 
   <div class="card-block">
     <div class="form-group">
-      <%= f.label :content, :body do %>
-
-        <preview-text-area language="markdown">
-          <%= f.text_area :body, rows: 8, cols: 80 %>
-        </preview-text-area>
-      <% end %>
+      <preview-text-area language="markdown">
+        <%= f.text_area :body, rows: 20 %>
+      </preview-text-area>
     </div>
   </div>
 
