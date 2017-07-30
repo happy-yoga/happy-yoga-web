@@ -2,3 +2,7 @@ de:
   landing-page:
     edit:
       welcome_text: "Begrüßungstext"
+  helpers:
+    label:
+      content:
+        body: "Inhalt des Elements"

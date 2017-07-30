@@ -2,6 +2,7 @@
   "name": "happy-yoga-web",
   "private": true,
   "dependencies": {
+    "document-register-element": "^1.6.2",
     "eslint": "^4.3.0",
     "faucet-pipeline-js": "^0.12.2",
     "standard": "^10.0.2"

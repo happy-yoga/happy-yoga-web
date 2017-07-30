@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require turbolinks
+//= require document-register-element/build/document-register-element.js
 //= require dist/main

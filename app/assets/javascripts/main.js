@@ -1,3 +1,1 @@
-import helloWorld from './components/hello-world.js'
-
-helloWorld()
+import './components/embed-form.js'
