@@ -3,6 +3,8 @@
     <h3><%= t('landing_page.edit.welcome_text') %></h3>
   </div>
   <embed-form>
-    <%= render 'admin/contents/form', content: @welcome_text %>
-  </embed-form>
+    <preview-text-area>
+      <%= render 'admin/contents/form', content: @welcome_text %>
+    </preview-form>
+  </preview-text-area>
 </div>
