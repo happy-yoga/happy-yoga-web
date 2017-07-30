@@ -2,9 +2,9 @@
   <div class="card-header">
     <h3><%= t('landing_page.edit.welcome_text') %></h3>
   </div>
-  <embed-form>
+  <embed-form selector=".content-form">
     <preview-text-area>
       <%= render 'admin/contents/form', content: @welcome_text %>
-    </preview-form>
-  </preview-text-area>
+    </preview-text-area>
+  </embed-form>
 </div>
