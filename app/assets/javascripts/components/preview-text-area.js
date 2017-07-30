@@ -25,7 +25,7 @@ class PreviewTextArea extends HTMLElement {
     this.textArea.after(this.preview)
   }
 
-  disconnetedCallback () {
+  disconnectedCallback () {
     window.clearInterval(this.previewInterval)
   }
 
