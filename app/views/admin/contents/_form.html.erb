@@ -3,7 +3,10 @@
   <div class="card-block">
     <div class="form-group">
       <%= f.label :content, :body do %>
-        <%= f.text_area :body, rows: 8, cols: 80 %>
+
+        <preview-text-area>
+          <%= f.text_area :body, rows: 8, cols: 80 %>
+        </preview-text-area>
       <% end %>
     </div>
   </div>
