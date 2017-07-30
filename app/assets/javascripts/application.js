@@ -13,4 +13,5 @@
 //= require turbolinks
 //= require document-register-element/build/document-register-element.js
 //= require whatwg-fetch/fetch.js
+//= require markdown/lib/markdown.js
 //= require dist/main

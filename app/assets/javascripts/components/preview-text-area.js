@@ -1,4 +1,4 @@
-/* global window, customElements, HTMLElement, $ */
+/* global window, customElements, HTMLElement, $, markdown */
 
 const preview = () => `<embed-form-preview></embed-form-preview>`
 
@@ -22,11 +22,13 @@ class PreviewTextArea extends HTMLElement {
     this.preview = $(preview())
 
     this.bindPreviewDimensions()
+    this.bindContentPreview()
     this.textArea.after(this.preview)
   }
 
   disconnectedCallback () {
     window.clearInterval(this.previewInterval)
+    this.textArea.off(this.textAreaListeners)
   }
 
   bindPreviewDimensions () {
@@ -35,6 +37,23 @@ class PreviewTextArea extends HTMLElement {
     this.previewInterval = setInterval(() =>
       bindDimensions(this.textArea, this.preview), PreviewTextArea.dimensionCheckInterval
     )
+  }
+
+  bindContentPreview () {
+    this.preview.html(markdown.toHTML(this.textArea.val()))
+
+    this.textArea.on(this.textAreaListeners, e => {
+      this.preview.html(markdown.toHTML(this.textArea.val()))
+    })
+  }
+
+  get textAreaListeners () {
+    let memo
+
+    if (memo) { return memo }
+
+    memo = ['change', 'keyup', 'cut', 'paste'].join('.preview-text ')
+    return memo
   }
 
   set root (root) {
