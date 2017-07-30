@@ -20,7 +20,6 @@ class EmbedForm extends HTMLElement {
   }
 
   initializeForm () {
-    console.log('initialize Form')
     this.form = this.root.find('form')
     this.form.on('submit', (e) => {
       e.preventDefault()
@@ -31,7 +30,7 @@ class EmbedForm extends HTMLElement {
   serializeForm (e) {
     const body = this.form.serialize()
     const method = this.form.attr('method') || 'GET'
-    this.disableForm()
+    this.disable()
 
     return fetch(this.form.attr('action'), {
       method,
@@ -47,8 +46,9 @@ class EmbedForm extends HTMLElement {
         this.root.html(content)
       })
       .then(() => this.initializeForm())
+      .then(() => this.enable())
       .catch(e => {
-        this.enableForm()
+        this.enable()
         console.log(e)
       })
   }
@@ -59,6 +59,18 @@ class EmbedForm extends HTMLElement {
 
   enableForm () {
     this.form.find(':input').prop('disabled', false)
+  }
+
+  disable () {
+    this.disableForm()
+    this.root.attr('disabled', true)
+  }
+
+  enable () {
+    setTimeout(() => {
+      this.enableForm()
+      this.root.attr('disabled', false)
+    }, 500)
   }
 
   set root (elem) {
