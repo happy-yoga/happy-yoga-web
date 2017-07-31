@@ -11,8 +11,9 @@ class PreviewTextArea extends HTMLElement {
     this.textArea = this.root.find('textarea')
     this.mde = new SimpleMDE({
       element: this.textArea[0],
-      spellChecker: false
-
+      spellChecker: false,
+      hideIcons: ['image'],
+      forceSync: true
     })
   }
 
