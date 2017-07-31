@@ -10,8 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require simplemde/dist/simplemde.min.js
 //= require turbolinks
 //= require document-register-element/build/document-register-element.js
 //= require whatwg-fetch/fetch.js
-//= require dist/main
+//= require dist/app
