@@ -3,10 +3,8 @@
   "private": true,
   "dependencies": {
     "document-register-element": "^1.6.2",
-    "eslint": "^4.3.0",
     "faucet-pipeline-js": "^0.12.2",
     "simplemde": "^1.11.2",
-    "standard": "^10.0.2",
     "whatwg-fetch": "^2.0.3",
     "zepto": "^1.2.0"
   },
@@ -15,5 +13,9 @@
     "test": "eslint --cache *.js src && echo ✓",
     "start": "npm run build:js -- --watch",
     "postinstall": "npm run build:js"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "standard": "^10.0.2"
   }
 }
