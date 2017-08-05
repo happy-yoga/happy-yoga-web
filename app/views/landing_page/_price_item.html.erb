@@ -1,0 +1,15 @@
+<price-item <%= I18n.exists?("price-categories.#{item}.special", locale) ? "special" : nil %>>
+  <h4><%= t("price-categories.#{item}.headline") %></h4>
+
+    <% unless I18n.exists?("price-categories.#{item}.items", locale) %>
+
+      <%= render partial: 'landing_page/price_offer', locals: { item: item, priceItem: nil } %>
+
+    <% else %>
+
+      <% t("price-categories.#{item}.items").each do |priceItem| %>
+        <%= render partial: 'landing_page/price_offer', locals: { item: item, priceItem: priceItem } %>
+      <% end %>
+
+    <% end %>
+</price-item>

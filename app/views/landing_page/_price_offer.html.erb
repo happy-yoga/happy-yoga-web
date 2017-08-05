@@ -1,0 +1,26 @@
+<price-offer>
+  <price-value>
+    <%= number_to_currency((priceItem.nil? ? t("price-categories.#{item}.price") : priceItem[:price]), {
+        locale: :de,
+        precision: t("price-categories.#{item}.precision").to_i
+      }) %>
+
+    <price-currency><%= t("price-categories.#{item}.currency") %></price-currency>
+
+
+    <price-offer-meta <%= I18n.exists?("price-categories.#{item}.rhythm", locale) ? "indent" : nil %>>
+      <% if I18n.exists?("price-categories.#{item}.rhythm", locale) %>
+          <offer-meta-rhythm><%= t("price-categories.#{item}.rhythm") %></offer-meta-rhythm>
+      <% end %>
+
+      <% if I18n.exists?("price-categories.#{item}.info", locale) || (priceItem && priceItem[:info]) %>
+        <offer-meta-sub-headline><%= priceItem.nil? ? t("price-categories.#{item}.info") : priceItem[:info] %></offer-meta-sub-headline>
+      <% end %>
+    </price-offer-meta>
+  </price-value>
+
+
+  <% if I18n.exists?("price-categories.#{item}.long-info", locale) %>
+    <p><%= raw t("price-categories.#{item}.long-info") %></p>
+  <% end %>
+</price-offer>

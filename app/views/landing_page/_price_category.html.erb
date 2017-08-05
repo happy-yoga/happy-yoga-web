@@ -1,0 +1,10 @@
+<price-category>
+  <header>
+    <h3><%= headline %></h3>
+    <p class="sub-headline"><%= sub_headline %></p>
+  </header>
+
+  <% (items || []).each do |item| %>
+    <%= render partial: 'landing_page/price_item', locals: { item: item } %>
+  <% end %>
+</price-category>

@@ -1,3 +1,35 @@
-<content-block>
-  <%= markdown(@welcome_text.body) %>
+<content-block name="welcome-text">
+  <content-block-body>
+    <%= markdown(@welcome_text.body) %>
+  </content-block-body>
+</content-block>
+
+<content-block name="price-list">
+  <content-block-body>
+    <h2><%= t('landing-page.prices.headline') %></h2>
+
+    <%= render partial: 'landing_page/price_category', locals: {
+      headline: t('price-categories.first-try.headline'),
+      sub_headline: t('price-categories.first-try.sub-headline'),
+      items: %w(first-try.offers.trial first-try.offers.new-customer-1 first-try.offers.new-customer-2)
+    } %>
+
+    <%= render partial: 'landing_page/price_category', locals: {
+      headline: t('price-categories.time-cards.headline'),
+      sub_headline: t('price-categories.time-cards.sub-headline'),
+      items: %w(time-cards.offers.single time-cards.offers.quadruple time-cards.offers.decuple time-cards.offers.decuple-long)
+    } %>
+
+    <%= render partial: 'landing_page/price_category', locals: {
+      headline: t('price-categories.flatrates.headline'),
+      sub_headline: t('price-categories.flatrates.sub-headline'),
+      items: %w(flatrates.offers.full-year flatrates.offers.half-year flatrates.offers.month)
+    } %>
+
+    <%= render partial: 'landing_page/price_category', locals: {
+      headline: t('price-categories.abo.headline'),
+      sub_headline: t('price-categories.abo.sub-headline'),
+      items: %w(abo.offers.full-year)
+    } %>
+  </content-block-body>
 </content-block>

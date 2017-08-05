@@ -1,0 +1,75 @@
+price-item
+  display: block
+
+  border-bottom: 1px solid #E6E6E6
+  padding-bottom: 1rem
+  margin-bottom: 1rem
+  margin-left: 2rem
+  margin-right: 2rem
+
+  &:last-of-type
+    border-bottom: none
+    padding-bottom: 0
+    margin-bottom: 0
+
+  h4
+    font-family: akrobatregular
+    position: relative
+    top: 0
+    left: 0
+    margin-bottom: 1rem
+
+    &:after
+      content: ''
+      display: block
+      width: 2.25rem
+      border-top: 2px solid #000
+      position: absolute
+      bottom: -.7rem
+      left: 50%
+      transform: translateX(-50%)
+
+price-offer
+  display: block
+
+price-value
+  font-size: 3rem
+  position: relative
+  top: 0
+  left: 0
+
+price-item[special]
+  price-value
+    color: #FF0066
+
+  offer-meta-sub-headline
+    color: #000
+
+price-currency
+  font-size: 2.25rem
+  position: absolute
+  top: 0
+  left: -1.5rem
+
+price-value, price-currency
+  font-family: 'akrobatblack'
+
+
+price-offer-meta
+  font-size: 1rem
+  display: block
+
+  &[indent]
+    position: absolute
+    top: 100%
+    right: -.5rem
+    transform: translate(100%, -2rem)
+    white-space: nowrap
+    text-align: left
+
+  offer-meta-sub-headline, offer-meta-rhythm
+    display: block
+    width: 100%
+
+  offer-meta-rhythm
+    font-family: 'akrobatbold'
