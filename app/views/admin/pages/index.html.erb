@@ -6,3 +6,11 @@
     <%= render 'admin/contents/form', content: @welcome_text %>
   </embed-form>
 </div>
+
+<div class="card">
+  <div class="card-header">
+    <h3><%= t('landing-page.edit.price-category-translations') %></h3>
+  </div>
+
+  <%= render partial: 'admin/translations/translation_key_list', locals: { translations: price_category_translations(@locale) } %>
+</div>

@@ -48,11 +48,6 @@ class Admin::TranslationsController < ::Admin::ApplicationController
 
   private
 
-  def find_locale
-    logger.debug params[:locale_id]
-    @locale = params[:locale_id] || I18n.locale
-  end
-
   def find_translation
     @translation = Translation.find(params[:id])
   end

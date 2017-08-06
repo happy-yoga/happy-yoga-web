@@ -2,6 +2,7 @@ de:
   landing-page:
     edit:
       welcome_text: "Begrüßungstext"
+      price-category-translations: "Preise"
 
     prices:
       headline: Preise

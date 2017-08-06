@@ -1,6 +1,7 @@
 class Admin::ApplicationController < ::ActionController::Base
   protect_from_forgery with: :exception
   before_action :reject_unauthenticated
+  before_action :find_locale
   helper_method :current_user
 
   layout 'admin_layout'
@@ -22,5 +23,9 @@ class Admin::ApplicationController < ::ActionController::Base
 
   def reject_unauthenticated
     redirect_to admin_sessions_new_path unless (current_user && admin?)
+  end
+
+  def find_locale
+    @locale = params[:locale_id] || I18n.locale
   end
 end
