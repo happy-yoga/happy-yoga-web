@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'translations/index'
+
+
   get 'pages/landing_page'
 
 
@@ -9,6 +12,8 @@ Rails.application.routes.draw do
 
   namespace 'edit', module: 'admin', as: 'admin' do
     resources :contents
+
+    resources :translations, constraints: { :id => /[^\/]+/ }
 
     # authentication management
     get 'sessions/new'
